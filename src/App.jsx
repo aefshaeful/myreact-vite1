@@ -1,8 +1,71 @@
 //import "./style.css";
-
 import CardProduct from "./components/fragments/CardProduct";
+import { useState } from "react";
 
 function App() {
+  const [productList, setProductList] = useState([
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming Laravel",
+      description: "(Getting Started with Laravel 9)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming NodeJs",
+      description: "(Getting Started with NodeJs)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming NextJs",
+      description: "(Getting Started with NextJs)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming PHP",
+      description: "(Getting Started with PHP)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming Python",
+      description: "(Getting Started with Python)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      title: "Programming Java",
+      description: "(Getting Started with Java)",
+      price: 600000,
+      discount: 400000,
+    },
+    {
+      courseType: "Free Bootcamp",
+      title: "Programming ReactJs",
+      description: "(Getting Started with ReactJs)",
+      price: 0,
+      discount: 0,
+    },
+    {
+      courseType: "Intensive Bootcamp",
+      title: "Programming JavaScipt",
+      description: "(Getting Started with JavaScript)",
+      price: 600000,
+      discount: 400000,
+    },
+  ]);
+
+  const [shoopingCart, setShoopingCart] = useState([]);
+  const addShoopingCart = (product) => {
+    setShoopingCart((prevState) => [...prevState, product]);
+  };
+
   return (
     <div>
       <header className="bg-[#152a46] px-10 p-5 m-0 text-white mt-0 h-80">
@@ -26,7 +89,7 @@ function App() {
                 </a>
               </li>
               <li className="mr-5 inline-block">
-                <span id="saldo">400000</span>
+                <span id="saldo">Total Keranjang: {shoopingCart.length}</span>
               </li>
             </ul>
           </nav>
@@ -34,30 +97,26 @@ function App() {
       </header>
 
       <main className="flex flex-wrap justify-center items-center gap-4 px-[72px] py-[89px]">
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
-        <CardProduct>
-          <CardProduct.BannerProduct />
-          <CardProduct.DescriptionProduct />
-        </CardProduct>
+        {productList.map((product) => {
+          return (
+            <CardProduct key={product.title}>
+              <CardProduct.BannerProduct
+                courseType={product.courseType}
+                title={product.title}
+                description={product.description}
+              />
+              <CardProduct.DescriptionProduct
+                courseType={product.courseType}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                discount={product.discount}
+                addShoopingCart={(selectedProduct) => addShoopingCart([...shoopingCart, selectedProduct])}
+              />
+            </CardProduct>
+          );
+        })}
+
         {/* <section>
           <h2>React JS</h2>
           <p>Ini adalah paragraf dalam React JS.</p>
