@@ -30,7 +30,14 @@ const BannerProduct = ({ courseType = "Bootcamp", title, description }) => {
   );
 };
 
-const DescriptionProduct = ({ courseType, title, description, price, discount, addShoopingCart }) => {
+const DescriptionProduct = ({
+  courseType,
+  title,
+  description,
+  price,
+  discount,
+  addShoopingCart,
+}) => {
   return (
     <div className="w-[352px] px-[24px]">
       <h5 className="text-xl font-bold mt-[20px]">{title}</h5>
@@ -52,7 +59,9 @@ const DescriptionProduct = ({ courseType, title, description, price, discount, a
         )}
       </div>
       <button
-        onClick={() => addShoopingCart({ courseType, title, description, price, discount })}
+        onClick={() =>
+          addShoopingCart({ courseType, title, description, price, discount })
+        }
         className="mt-[8px] w-full bg-[#0ACF83] h-[40px] rounded-[10px] text-white font-bold text-base hover:bg-[#2980b9] focus:outline-none focus:ring focus:border-[#3498db] transition-all duration-300"
       >
         Add to Cart
