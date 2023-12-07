@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@keyframes zoomIn {
+    0%, 100% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+  
+  .animate-zoom-in {
+    animation: zoomIn 10s infinite;
+  }
+  

@@ -1,11 +1,25 @@
-import CardProduct from "../components/fragments/CardProduct";
-import Navbar from "../components/layouts/Navbar";
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/productService";
+import Card from "../components/fragments/Card";
+import Header from "../components/layouts/Header";
 
 const HomePage = () => {
+  const [productList, setProductList] = useState([]);
+
+  const fetchProductList = async () => {
+    const response = await getProducts.get("/products");
+    console.log("response", response);
+    setProductList(response.data.slice(0, 4));
+  };
+
+  useEffect(() => {
+    fetchProductList();
+  }, []);
+
   return (
     <div>
       <div className="bg-[#152a46] mt-0">
-        <Navbar />
+        <Header />
         <div className="relative isolate px-6 pt-[30px] lg:px-8">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -20,8 +34,11 @@ const HomePage = () => {
             />
           </div>
           <div className="mx-auto py-32 sm:py-48 lg:py-[58px] flex justify-center">
-            <div className="card card-side bg-base-100 shadow-xl h-[500px] w-[1300px]">
-              <figure style={{ height: "100%", width: "100%" }}>
+            <div className="card card-side bg-base-100 shadow-xl h-[500px] w-[1300px] overflow-hidden">
+              <figure
+                style={{ height: "100%", width: "100%" }}
+                className="relative transform scale-90 transition-transform duration-300 ease-in-out animate-zoom-in"
+              >
                 <img
                   className="rounded-[10px] h-full w-full object-cover"
                   src="/images/banner.jpg"
@@ -63,30 +80,6 @@ const HomePage = () => {
         <Navbar />
       </header> */}
 
-      <div className="grid grid-rows-3 grid-flow-col gap-4 px-[30px] py-[50px]">
-        <div className="row-span-3 ...">
-          <img
-            src="/images/girlmodel.jpg"
-            alt="product"
-            className="h-full w-full object-cover animate-pulse"
-          />
-        </div>
-        <div className="col-span-2 ...">
-          <img
-            src="/images/model.jpg"
-            alt="product"
-            className="h-full w-full object-cover animate-pulse"
-          />
-        </div>
-        <div className="row-span-2 col-span-2 ...">
-          <img
-            src="/images/sales.jpg"
-            alt="product"
-            className="h-full w-full object-cover animate-pulse"
-          />
-        </div>
-      </div>
-
       <div className="bg-gray-200 w-full h-[100px]">
         <div className="flex items-center justify-center h-full">
           <div className="flex items-center justify-center gap-x-20">
@@ -100,21 +93,15 @@ const HomePage = () => {
 
       <main className="flex flex-wrap justify-center items-center gap-4 px-[30px] py-[80px]">
         {/* Repeat your CardProduct component as needed */}
-        {Array.from({ length: 3 }).map((_, index) => (
-          <CardProduct key={index}>
-            <CardProduct.BannerProduct
-              courseType="Bootcamp"
-              title="Bootcamp Fullstack Javascript"
-              description="Belajar MERN Stack"
-            />
-            <CardProduct.DescriptionProduct
-              courseType="Bootcamp"
-              title="Bootcamp Fullstack Javascript"
-              description="Belajar MERN Stack"
-              price={1000000}
-              discount={400000}
-            />
-          </CardProduct>
+        {productList.map((product) => (
+          <Card
+            key={product.id}
+            image={product.image}
+            title={product.title}
+            price={product.price}
+            rating={product.rating.rate}
+            count={product.rating.count}
+          />
         ))}
 
         {/* "Show More" button */}
@@ -127,6 +114,33 @@ const HomePage = () => {
           </a>
         </div>
       </main>
+
+      <div className="grid grid-rows-3 grid-flow-col gap-4 px-[30px] py-[50px]">
+        <div className="row-span-3 ...">
+          <img
+            src="/images/girlmodel.jpg"
+            alt="product"
+            loading="lazy"
+            className="h-full w-full object-cover animate-pulse"
+          />
+        </div>
+        <div className="col-span-2 ...">
+          <img
+            src="/images/model.jpg"
+            alt="product"
+            loading="lazy"
+            className="h-full w-full object-cover animate-pulse"
+          />
+        </div>
+        <div className="row-span-2 col-span-2 ...">
+          <img
+            src="/images/sales.jpg"
+            alt="product"
+            loading="lazy"
+            className="h-full w-full object-cover animate-pulse"
+          />
+        </div>
+      </div>
 
       <footer className="bg-[#152a46] p-2 text-white text-center">
         <p>&copy; 2023 HTML Javascript dan CSS</p>
