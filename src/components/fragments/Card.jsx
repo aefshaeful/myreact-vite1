@@ -6,9 +6,12 @@ function classNames(...classes) {
 }
 
 const Card = (props) => {
-  const { image, title, price, rating, count } = props;
+  const { image, title, price, rating, count, onClick } = props;
   return (
-    <div className="group relative w-[280px] rounded-md shadow-lg">
+    <div
+      className="group relative w-[280px] rounded-md shadow-lg"
+      onClick={onClick}
+    >
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
         <img
           src={image}
@@ -18,9 +21,9 @@ const Card = (props) => {
       </div>
       <div className="flex items-center px-[8px] py-[5px]">
         <div className="flex items-center">
-          {[0, 1, 2, 3, 4].map((startRating) => (
+          {[0, 1, 2, 3, 4].map((startRating, index) => (
             <StarIcon
-              key={rating}
+              key={index}
               className={classNames(
                 rating > startRating ? "text-yellow-400" : "text-gray-200",
                 "h-5 w-5 flex-shrink-0"

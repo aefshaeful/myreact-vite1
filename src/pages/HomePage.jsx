@@ -95,7 +95,7 @@ const HomePage = () => {
         {/* Repeat your CardProduct component as needed */}
         {productList.map((product) => (
           <Card
-            key={product.id}
+            key={product.title}
             image={product.image}
             title={product.title}
             price={product.price}
