@@ -2,36 +2,42 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-  // More products...
-];
+// const products = [
+//   {
+//     id: 1,
+//     name: "Throwback Hip Bag",
+//     href: "#",
+//     color: "Salmon",
+//     price: "$90.00",
+//     quantity: 1,
+//     imageSrc:
+//       "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+//     imageAlt:
+//       "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+//   },
+//   {
+//     id: 2,
+//     name: "Medium Stuff Satchel",
+//     href: "#",
+//     color: "Blue",
+//     price: "$32.00",
+//     quantity: 1,
+//     imageSrc:
+//       "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+//     imageAlt:
+//       "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+//   },
+//   // More products...
+// ];
 
 const ShoppingCart = ({ onCart, closeCart }) => {
+  const { products } = useSelector((state) => state.product);
+  const { items } = useSelector((state) => state.cart);
+
+  console.log("ProductCart:", items);
+
   return (
     <Transition.Root show={onCart} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeCart}>
@@ -81,52 +87,69 @@ const ShoppingCart = ({ onCart, closeCart }) => {
 
                       <div className="mt-8">
                         <div className="flow-root">
-                          <ul
-                            role="list"
-                            className="-my-6 divide-y divide-gray-200"
-                          >
-                            {products.map((product) => (
-                              <li key={product.id} className="flex py-6">
-                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
-                                  />
-                                </div>
-
-                                <div className="ml-4 flex flex-1 flex-col">
-                                  <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
-                                      <h3>
-                                        <a href={product.href}>
-                                          {product.name}
-                                        </a>
-                                      </h3>
-                                      <p className="ml-4">{product.price}</p>
+                          {items && items.length > 0 ? (
+                            <ul
+                              role="list"
+                              className="-my-6 divide-y divide-gray-200"
+                            >
+                              {items.map((item) => {
+                                const productItem = products.find(
+                                  (productItem) => productItem.id === item.id
+                                );
+                                return (
+                                  <li
+                                    key={productItem?.id}
+                                    className="flex py-6"
+                                  >
+                                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                      <img
+                                        src={productItem?.image}
+                                        alt=""
+                                        className="h-full w-full object-cover object-center"
+                                      />
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
-                                    </p>
-                                  </div>
-                                  <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">
-                                      Qty {product.quantity}
-                                    </p>
 
-                                    <div className="flex">
-                                      <button
-                                        type="button"
-                                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                                      >
-                                        Remove
-                                      </button>
+                                    <div className="ml-4 flex flex-1 flex-col">
+                                      <div>
+                                        <div className="flex justify-between text-base font-medium text-gray-900">
+                                          <h3>
+                                            <a href="#">{productItem?.title}</a>
+                                          </h3>
+                                          <p className="ml-4">
+                                            ${" "}
+                                            {item.qty *
+                                              productItem?.price.toLocaleString(
+                                                "en-US",
+                                                {
+                                                  styles: "currency",
+                                                  currency: "USD",
+                                                }
+                                              )}
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <div className="flex flex-1 items-end justify-between text-sm">
+                                        <p className="text-gray-500">
+                                          Qty {item.qty}
+                                        </p>
+
+                                        <div className="flex">
+                                          <button
+                                            type="button"
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                          >
+                                            Remove
+                                          </button>
+                                        </div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                            <p>Your cart is empty.</p>
+                          )}
                         </div>
                       </div>
                     </div>

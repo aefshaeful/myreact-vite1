@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useSelector } from "react-redux";
+import Button from "../components/elements/Button";
 //import { useDispatch } from "react-redux";
 
 function classNames(...classes) {
@@ -13,6 +14,7 @@ function classNames(...classes) {
 
 const DetailPage = ({ isOpen, closeModal }) => {
   const { product } = useSelector((state) => state.product);
+  console.log("ProductItem:", product);
 
   return (
     <>
@@ -54,13 +56,15 @@ const DetailPage = ({ isOpen, closeModal }) => {
                   </div>
                   <div className="w-100 flex justify-center items-center">
                     <div className="flex font-sans">
-                      <div className="flex-none w-60 relative bg-gray-100">
-                        <img
-                          src={product.image}
-                          alt=""
-                          className="absolute inset-0 w-full max-h-min object-cover object-center"
-                          loading="lazy"
-                        />
+                      <div className="flex-none w-60 relative bg-gray-100 flex items-center justify-center">
+                        <figure className="px-[10px] py-[10px]">
+                          <img
+                            src={product.image}
+                            alt=""
+                            className="w-full max-h-min object-cover object-center"
+                            loading="lazy"
+                          />
+                        </figure>
                       </div>
                       <form className="flex-auto p-4">
                         <div className="flex flex-wrap">
@@ -114,18 +118,25 @@ const DetailPage = ({ isOpen, closeModal }) => {
                         </div>
                         <div className="flex space-x-4 mb-6 text-sm font-medium">
                           <div className="flex-auto flex space-x-4">
-                            <button
-                              className="h-10 px-6 font-semibold rounded-md bg-black text-white"
-                              type="submit"
-                            >
-                              Buy now
-                            </button>
-                            <button
-                              className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
-                              type="button"
-                            >
-                              Add to bag
-                            </button>
+                            <Button classNames="bg-[#FFCD29] px-[30px] py-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+                              <div className="indicator gap-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                  />
+                                </svg>
+                                <span>Add to cart</span>
+                              </div>
+                            </Button>
                           </div>
                           <button
                             className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
@@ -146,20 +157,8 @@ const DetailPage = ({ isOpen, closeModal }) => {
                             </svg>
                           </button>
                         </div>
-                        <p className="text-sm text-slate-700">
-                          Free shipping on all continental US orders.
-                        </p>
                       </form>
                     </div>
-                  </div>
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -11,12 +11,14 @@ export const productSlice = createSlice({
             title: "",
             description: "",
             price: "",
-            images: "",
+            image: "",
             category: "",
             rating: "",
         },
         error: null,
     },
+    
+
     extraReducers: (builder) => 
     builder 
     .addCase(getAllProduct.pending, (state) => {
@@ -43,6 +45,8 @@ export const productSlice = createSlice({
         state.loading = false;
         state.error = action.payload
     })
+
+    
 });
 
 

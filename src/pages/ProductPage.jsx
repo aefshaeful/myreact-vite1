@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/layouts/Navbar";
 //import { getProducts } from "../services/productService";
-import Card from "../components/fragments/Card";
-import Pagination from "../components/elements/Pagination";
+// import Card from "../components/fragments/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct, getProductDetail } from "../store/product/action";
 import Banner from "../components/fragments/Banner";
 import DetailPage from "./DetailPage";
 import ShoppingCart from "../components/fragments/ShoppingCart";
+// import CardProduct from "../components/fragments/CardProduct";
+import CardProducts from "../components/fragments/CardProducts";
+import { addToCart } from "../store/product/cartSlice";
 //import { Link } from "react-router-dom";
 //import Modal from "../components/fragments/Modal";
 
@@ -15,10 +17,11 @@ const ProductPage = () => {
   const { products } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState({});
   const [onCart, setOnCart] = useState(false);
 
-  const openCart = () => {
+  const openCart = (productItem) => {
+    dispatch(getProductDetail(productItem.id));
+    dispatch(addToCart(productItem));
     setOnCart(true);
   };
 
@@ -60,16 +63,17 @@ const ProductPage = () => {
 
   return (
     <div>
-      <Navbar handleOnCart={openCart} />
+      <Navbar />
 
       <div className="px-[30px] py-[20px] ">
         <Banner />
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-4 py-[50px]">
+      <div className="flex flex-wrap justify-center items-center gap-8 py-[50px]">
         {products.map((product) => (
           <div key={product.id} className="product-container">
-            <Card
+            <CardProducts
               onClick={() => openModal(product)}
+              addToCart={() => openCart(product)}
               image={product.image}
               title={product.title}
               price={product.price}
@@ -81,7 +85,7 @@ const ProductPage = () => {
       </div>
       {openModal && <DetailPage isOpen={isOpen} closeModal={closeModal} />}
       <ShoppingCart onCart={onCart} closeCart={closeCart} />
-      <Pagination />
+      {/* <Pagination /> */}
     </div>
   );
 };

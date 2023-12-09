@@ -1,7 +1,9 @@
-export default function Button() {
+/* eslint-disable react/prop-types */
+export default function Button({children, classNames}) {
     return (
-        <button className="bg-slate-500 text-white px-5 py-2 rounded-lg">
-            Checkout
+        <button className={`font-bold rounded-lg ${classNames}`}>
+            {children}
         </button>
     );
 }
+
