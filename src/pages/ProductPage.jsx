@@ -62,9 +62,10 @@ const ProductPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <Navbar />
-
+    <>
+      <Navbar>
+        <Navbar.IconCart />
+      </Navbar>
       <div className="px-[30px] py-[20px] ">
         <Banner />
       </div>
@@ -86,7 +87,7 @@ const ProductPage = () => {
       {openModal && <DetailPage isOpen={isOpen} closeModal={closeModal} />}
       <ShoppingCart onCart={onCart} closeCart={closeCart} />
       {/* <Pagination /> */}
-    </div>
+    </>
   );
 };
 

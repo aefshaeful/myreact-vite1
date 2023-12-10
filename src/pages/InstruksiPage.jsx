@@ -1,11 +1,11 @@
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Navbar from "../components/layouts/Navbar";
 import { Accordion } from "../components/fragments/Accordion";
 import { FormCheckout } from "../components/fragments/FormCheckout";
-import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
 
-const CheckoutPage = () => {
+const InstruksiPage = () => {
   const [currentPage, setCurrentPage] = useState("");
   return (
     <>
@@ -24,8 +24,8 @@ const CheckoutPage = () => {
                     to="/checkout"
                     className={
                       currentPage === "checkout"
-                        ? "text-black"
-                        : "text-blue-500"
+                        ? "text-blue-500"
+                        : "text-black"
                     }
                     onClick={() => setCurrentPage("checkout")}
                   >
@@ -38,10 +38,10 @@ const CheckoutPage = () => {
                     to="/instruksi-pembayaran"
                     className={
                       currentPage === "instruksi-pembayaran"
-                        ? "text-blue-500"
-                        : "text-black"
+                        ? "text-black"
+                        : "text-blue-500"
                     }
-                    onClick={() => setCurrentPage("instruksi-pembayaran")}
+                    onClick={() => setCurrentPage("intstruksi-pembayaran")}
                   >
                     Instruksi Pembayaran
                   </Link>
@@ -120,4 +120,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default InstruksiPage;
