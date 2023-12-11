@@ -10,6 +10,7 @@ import ShoppingCart from "../components/fragments/ShoppingCart";
 // import CardProduct from "../components/fragments/CardProduct";
 import CardProducts from "../components/fragments/CardProducts";
 import { addToCart } from "../store/product/cartSlice";
+import Footer from "../components/layouts/Footer";
 //import { Link } from "react-router-dom";
 //import Modal from "../components/fragments/Modal";
 
@@ -63,30 +64,39 @@ const ProductPage = () => {
 
   return (
     <>
-      <Navbar>
-        <Navbar.IconCart />
-      </Navbar>
-      <div className="px-[30px] py-[20px] ">
-        <Banner />
-      </div>
-      <div className="flex flex-wrap justify-center items-center gap-8 py-[50px]">
-        {products.map((product) => (
-          <div key={product.id} className="product-container">
-            <CardProducts
-              onClick={() => openModal(product)}
-              addToCart={() => openCart(product)}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-              rating={product.rating ? product.rating.rate : 0}
-              count={product.rating ? product.rating.count : 0}
-            />
-          </div>
-        ))}
-      </div>
-      {openModal && <DetailPage isOpen={isOpen} closeModal={closeModal} />}
-      <ShoppingCart onCart={onCart} closeCart={closeCart} />
-      {/* <Pagination /> */}
+      <header>
+        <Navbar>
+          <Navbar.IconCart />
+        </Navbar>
+        <div className="px-0">
+          <Banner />
+        </div>
+      </header>
+      
+      <main className="bg-slate-100 px-20 py-24">
+        <div className="flex flex-wrap justify-center items-center gap-8 py-[50px]">
+          {products.map((product) => (
+            <div key={product.id} className="product-container">
+              <CardProducts
+                onClick={() => openModal(product)}
+                addToCart={() => openCart(product)}
+                image={product.image}
+                title={product.title}
+                price={product.price}
+                rating={product.rating ? product.rating.rate : 0}
+                count={product.rating ? product.rating.count : 0}
+              />
+            </div>
+          ))}
+        </div>
+        {openModal && <DetailPage isOpen={isOpen} closeModal={closeModal} />}
+        <ShoppingCart onCart={onCart} closeCart={closeCart} />
+      </main>
+
+      <footer className=" bg-[#ffffff]">
+        <Footer />
+        {/* <Pagination /> */}
+      </footer>
     </>
   );
 };

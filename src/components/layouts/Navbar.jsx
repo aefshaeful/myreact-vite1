@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ShoppingCart from "../fragments/ShoppingCart";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const Navbar = ({ children }) => {
@@ -9,9 +10,39 @@ const Navbar = ({ children }) => {
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
+      <div className="hidden lg:flex lg:gap-x-12">
+        <ul className="flex items-center list-none m-0">
+          <li className="mr-5 inline-block bg-[#FF6161] px-4 py-1 rounded-full">
+            <NavLink
+              to="/"
+              className="text-white font-semibold ml-0 inline-block"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="mr-5 inline-block bg-[#FF6161] px-4 py-1 rounded-full">
+            <NavLink
+              to="/products"
+              className="text-white font-semibold ml-0 inline-block"
+            >
+              Shop
+            </NavLink>
+          </li>
+          {/* <li className="mr-5 inline-block">
+               <button className="bg-[#FF6161] rounded-full px-3 py-1 text-white font-semibold text-base hover:bg-[#2980b9] focus:outline-none focus:ring focus:border-[#3498db] transition-all duration-300">
+                 Login
+               </button>
+             </li>
+             <li className="inline-block">
+               <button className="bg-[#FF6161] rounded-full px-3 py-1 text-white font-semibold text-base hover:bg-[#2980b9] focus:outline-none focus:ring focus:border-[#3498db] transition-all duration-300">
+                 Register
+               </button>
+             </li> */}
+        </ul>
+      </div>
       <div className="flex-none">
-        <div className="dropdown dropdown-end">{children}</div>
-        <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end pr-3">{children}</div>
+        {/* <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
@@ -41,7 +72,7 @@ const Navbar = ({ children }) => {
               <a>Logout</a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
       {/* <ShoppingCart onCart={onCart} closeCart={closeCart} /> */}
     </div>
@@ -64,7 +95,7 @@ const CartIcon = () => {
 
   return (
     <>
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+      <div tabIndex={0} role="button" className="btn btn-circle bg-white">
         <div className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +117,7 @@ const CartIcon = () => {
       </div>
       <div
         tabIndex={0}
-        className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+        className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-white shadow"
       >
         <div className="card-body">
           <span className="font-bold text-lg">Quantity: {totalQuantity}</span>

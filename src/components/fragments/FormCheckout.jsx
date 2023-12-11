@@ -11,13 +11,13 @@ export const FormCheckout = () => {
       </div>
       <div className="mt-2">
         <dl className="divide-y divide-gray-100">
-          <div className="px-0 py-6 flex justify-between gap-5">
+          <div className="px-0 py-6 flex flex-col-2">
             <div className="text-sm font-medium leading-6 text-gray-900 w-32">
               <img src="/images/product.png" alt="" className="" />
             </div>
             <div className="mt-1 leading-6">
               <p className="font-bold text-sm">
-                Programming Laravel Getting Started with Laravel 9
+                Mens Casual Premium Slim Fit T-Shirts
               </p>
               <p className="text-sm text-gray-500 pt-2">$ 36.00</p>
               <p className="text-sm font-semibold text-blue-500 pt-4">

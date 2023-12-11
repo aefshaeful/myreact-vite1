@@ -35,31 +35,6 @@ const CardProducts = (props) => {
           style={{ objectFit: "cover" }}
         />
       </figure>
-      {/* <div className="mt-0 flex justify-item">
-      <button
-          type="button"
-          className="cursor-pointer btn btn-ghost btn-circle absolute right-2 top-0 bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
-          onClick={handleAddToCart}
-        >
-          <div className="indicator">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            <span className="badge badge-xs indicator-item"></span>
-          </div>
-        </button>
-      </div> */}
       <div className="flex items-center px-[8px] py-[5px]">
         <div className="flex items-center">
           {[0, 1, 2, 3, 4].map((startRating, index) => (
@@ -106,8 +81,10 @@ const CardProducts = (props) => {
           </p>
         </div>
       </div>
+
+      {/* Tombol add to cart */}
       <div className="mt-0 flex justify-between absolute right-2 top-2">
-        <div>
+        <div className="tooltip tooltip-bottom tooltip-primary" data-tip="Add to cart">
           <button
             type="button"
             className="cursor-pointer btn btn-ghost btn-circle bg-blue-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"

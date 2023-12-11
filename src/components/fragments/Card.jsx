@@ -9,17 +9,18 @@ const Card = (props) => {
   const { image, title, price, rating, count, onClick } = props;
   return (
     <div
-      className="group relative w-[280px] rounded-md shadow-lg"
+      className="group relative w-[280px] h-96 rounded-md shadow-lg"
       onClick={onClick}
     >
-      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+      <figure className="px-[80px] py-[80px] h-64">
         <img
           src={image}
           alt="product"
-          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          className="object-cover object-center"
+          style={{ objectFit: "cover" }}
         />
-      </div>
-      <div className="flex items-center px-[8px] py-[5px]">
+      </figure>
+      <div className="flex items-center px-[8px] pt-10">
         <div className="flex items-center">
           {[0, 1, 2, 3, 4].map((startRating, index) => (
             <StarIcon
@@ -40,7 +41,7 @@ const Card = (props) => {
           {count} reviews
         </a>
       </div>
-      <div className="mt-0 flex justify-between px-[10px] py-[10px]">
+      <div className="mt-0 flex justify-between px-[10px] py-2">
         <div>
           <h3 className="font-semibold text-gray-700">
             <a>

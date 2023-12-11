@@ -107,9 +107,6 @@ const DetailPage = ({ isOpen, closeModal }) => {
                               </a>
                             </div>
                           </div>
-                          {/* <div className="w-full flex-none text-sm font-medium text-slate-700 mt-2">
-                  Review {product.rating.rate}/5 ({product.rating.count})
-                </div> */}
                         </div>
                         <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
                           <div className="space-x-2 flex text-sm">
@@ -167,9 +164,6 @@ const DetailPage = ({ isOpen, closeModal }) => {
         </Dialog>
       </Transition>
     </>
-    // <Dialog open={onModal} onClose={() => onCloseModal}>
-
-    // </Dialog>
   );
 };
 
