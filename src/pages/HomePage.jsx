@@ -38,7 +38,6 @@ const HomePage = () => {
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-4 px-[30px] py-[80px]">
-          {/* Repeat your CardProduct component as needed */}
           {productList.map((product) => (
             <Card
               key={product.title}
@@ -88,7 +87,6 @@ const HomePage = () => {
         </div>
       </main>
 
-      
       <footer className=" bg-[#ffffff]">
         <Footer />
       </footer>

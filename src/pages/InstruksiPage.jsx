@@ -37,7 +37,6 @@ const InstruksiPage = () => {
                     >
                       Checkout
                     </Link>
-                    {/* <a href="/checkout" >Checkout</a> */}
                   </li>
                   <li>
                     <Link
@@ -51,7 +50,6 @@ const InstruksiPage = () => {
                     >
                       Instruksi Pembayaran
                     </Link>
-                    {/* <a href="/products">Instruksi Pembayara</a> */}
                   </li>
                 </ul>
               </div>

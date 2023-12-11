@@ -8,7 +8,6 @@ const CardInstruksi = () => {
   const handleCopy = () => {
     const duplicateData = `${accountNumber}`;
     navigator.clipboard.writeText(duplicateData);
-    // alert("Copied to clipboard");
     setAccountNumber(duplicateData);
     setOnCopy(true);
 
@@ -22,7 +21,6 @@ const CardInstruksi = () => {
       <section className="card w-full max-w-7xl">
         <div className="px-10 py-0  max-w-7xl">
           <div className="bg-white max-w-7xl h-96 rounded-t-2xl shadow-xl">
-            {/* <div className="flex flex-col px-[20px] py-[50px]"></div> */}
             <div className="px-[30px] py-[50px] grid grid-cols-2 gap-10">
               <div>
                 <h1 className="font-bold text-xl">Waiting for payment</h1>

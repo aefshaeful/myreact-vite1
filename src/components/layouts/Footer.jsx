@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <div className="footer w-full px-[80px] pt-[150px] relative  h-[437px]  sm:px-8 md:px-16 md:pt-16 lg:relative gap-8 md:gap-16 ">
+      <div className="footer w-full px-[80px] pt-[150px] relative h-80 sm:px-8 md:px-16 md:pt-16 gap-8">
         <aside className="flex-1">
           <a className="text-[#A3A3A3] font-semibold text-sm font-sans py-4">
             <p>TAGLINE edspert disini</p> <br />
@@ -54,7 +54,7 @@ const Footer = () => {
           <a className="text-[#A3A3A3]">Neck V </a>
         </nav>
         <nav className="font-semibold text-sm font-sans flex-1">
-          <header className="footer title">Jewelery</header>
+          <header className="footer title ">Jewelery</header>
           <a className="text-[#A3A3A3]">Micropave</a>
           <a className="text-[#A3A3A3]">Diamond Rings</a>
           <a className="text-[#A3A3A3]">Chain Bracelet</a>
@@ -67,14 +67,6 @@ const Footer = () => {
           <a className="text-[#A3A3A3]">Television</a>
           <a className="text-[#A3A3A3]">Gaming Monitor</a>
         </nav>
-
-        <div className="flex flex-row md:absolute bottom-0 right-0">
-          <img
-            src="./images/Ellipse.png"
-            className="object-right-bottom "
-            alt="Ellipse"
-          />
-        </div>
       </div>
     </>
   );

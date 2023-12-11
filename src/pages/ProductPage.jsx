@@ -100,7 +100,6 @@ const ProductPage = () => {
 
       <footer className=" bg-[#ffffff]">
         <Footer />
-        {/* <Pagination /> */}
       </footer>
     </>
   );

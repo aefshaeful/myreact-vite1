@@ -6,7 +6,6 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useSelector } from "react-redux";
 import Button from "../components/elements/Button";
-//import { useDispatch } from "react-redux";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
