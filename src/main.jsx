@@ -10,25 +10,10 @@ import { Provider } from "react-redux";
 import store from "./store";
 import InstruksiPage from "./pages/InstruksiPage";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <ProductPage />,
-    //   },
-    //   {
-    //     path: "/detail/:id",
-    //     element: <DetailPage />,
-    //   },
-    //   {
-    //     path: "/checkout",
-    //     element: <CheckoutPage />,
-    //   },
-    // ],
   },
   {
     path: "/products",
@@ -43,7 +28,6 @@ const router = createBrowserRouter([
     element: <InstruksiPage />,
   },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
