@@ -8,7 +8,13 @@ const Navbar = ({ children }) => {
   return (
     <div className="navbar bg-[#152a46]">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">
+          <img
+            className="h-[50px] w-[50px] pt-0"
+            src="./images/icons-cart.png"
+            alt=""
+          />
+        </a>
       </div>
       <div className="hidden lg:flex lg:gap-x-12">
         <ul className="flex items-center list-none m-0">

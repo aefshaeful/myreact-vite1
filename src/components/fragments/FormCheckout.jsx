@@ -13,7 +13,11 @@ export const FormCheckout = () => {
         <dl className="divide-y divide-gray-100">
           <div className="px-0 py-6 flex flex-col-2">
             <div className="text-sm font-medium leading-6 text-gray-900 w-32">
-              <img src="/images/product.png" alt="" className="" />
+              <img
+                src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+                alt=""
+                className="w-24 h-32"
+              />
             </div>
             <div className="mt-1 leading-6">
               <p className="font-bold text-sm">
