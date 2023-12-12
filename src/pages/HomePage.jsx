@@ -4,6 +4,7 @@ import Card from "../components/fragments/Card";
 import Header from "../components/layouts/Header";
 import Hero from "../components/layouts/Hero";
 import Footer from "../components/layouts/Footer";
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
   const [productList, setProductList] = useState([]);
@@ -50,12 +51,12 @@ const HomePage = () => {
           ))}
 
           <div className="flex items-center justify-center w-full mt-[30px]">
-            <a
-              href="/products"
+            <NavLink
+              to="/products"
               className="rounded-md bg-[#FF6161] px-3.5 py-2.5 text-sm md:text-base font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Show More...
-            </a>
+            </NavLink>
           </div>
         </div>
 
