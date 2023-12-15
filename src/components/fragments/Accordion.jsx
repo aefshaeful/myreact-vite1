@@ -104,7 +104,7 @@ export const Accordion = () => {
             </>
           )}
         </Disclosure>
-        <Disclosure as="div" className="mt-2">
+        {/* <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
@@ -184,7 +184,7 @@ export const Accordion = () => {
               </Disclosure.Panel>
             </>
           )}
-        </Disclosure>
+        </Disclosure> */}
       </div>
     </div>
   );

@@ -1,13 +1,44 @@
 /* eslint-disable react/prop-types */
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { addTotalPrice } from "../../store/product/totalPriceSlice";
 
 const ShoppingCart = ({ onCart, closeCart }) => {
   const { products } = useSelector((state) => state.product);
   const { items } = useSelector((state) => state.cart);
+  const { total } = useSelector((state) => state.totalPrice);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (products.length > 0 && items.length > 0) {
+      const total = items.reduce((acc, item) => {
+        const productItem = products.find(
+          (productItem) => productItem.id === item.id
+        );
+        return acc + productItem.price * item.qty;
+      }, 0);
+      dispatch(addTotalPrice(total));
+    }
+  }, [products, items, dispatch]);
+
+  const totalPriceRef = useRef(null);
+
+  // useEffect(() => {
+  //   if (items.length > 0) {
+  //     totalPriceRef.current.style.display = "block";
+  //   } else {
+  //     totalPriceRef.current.style.display = "none";
+  //   }
+  // }, [items]);
+
+  useEffect(() => {
+    if (totalPriceRef.current) {
+      totalPriceRef.current.style.display = items.length > 0 ? "block" : "none";
+    }
+  }, [items]);
 
   console.log("ProductCart:", items);
 
@@ -131,7 +162,27 @@ const ShoppingCart = ({ onCart, closeCart }) => {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p
+                          ref={totalPriceRef}
+                          style={{
+                            display: items.length > 0 ? "block" : "none",
+                          }}
+                        >
+                          ${" "}
+                          {total.toLocaleString("en-US", {
+                            styles: "currency",
+                            currency: "USD",
+                          })}
+                        </p>
+
+                        {/* <p>Subtotal</p>
+                        <p>
+                          ${" "}
+                          {total.toLocaleString("en-US", {
+                            styles: "currency",
+                            currency: "USD",
+                          })}
+                        </p> */}
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.

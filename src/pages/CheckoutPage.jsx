@@ -1,10 +1,10 @@
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import Navbar from "../components/layouts/Navbar";
-import { Accordion } from "../components/fragments/Accordion";
 import { FormCheckout } from "../components/fragments/FormCheckout";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import Footer from "../components/layouts/Footer";
+import CartList from "../components/fragments/CartList";
 
 const CheckoutPage = () => {
   const [currentPage, setCurrentPage] = useState(false);
@@ -19,7 +19,7 @@ const CheckoutPage = () => {
         <Navbar />
       </main>
 
-      <main className="lg:px-10 min-h-full bg-slate-100">
+      <main className="lg:px-10 min-h-full bg-slate-100 pb-48">
         <div className="pt-[20px] w-full h-10">
           <div className="flex flex-row">
             <NavLink to="/products">
@@ -40,7 +40,6 @@ const CheckoutPage = () => {
                   >
                     Checkout
                   </Link>
-                  {/* <a href="/checkout" >Checkout</a> */}
                 </li>
                 <li>
                   <Link
@@ -54,7 +53,6 @@ const CheckoutPage = () => {
                   >
                     Instruksi Pembayaran
                   </Link>
-                  {/* <a href="/products">Instruksi Pembayara</a> */}
                 </li>
               </ul>
             </div>
@@ -67,7 +65,16 @@ const CheckoutPage = () => {
           </h1>
         </div>
 
-        <div className="flex flex-wrap justify-center max-w-full h-full mt-8 pb-[180px]">
+        <div className="md:grid md:grid-cols-2 flex flex-col md:justify-center gap-x-10 gap-y-10">
+          <div className="md:w-fit md:h-fit bg-slite-200">
+            <FormCheckout />
+          </div>
+          <div className="md:w-fit md:h-fit card bg-white shadow-2xl shadow-white- px-4 py-5 mt-10 ">
+            <CartList />
+          </div>
+        </div>
+
+        {/* <div className="flex flex-wrap justify-center max-w-full h-full mt-8 pb-[180px]">
           <div className="px-4 py-4 lg:w-1/2 flex flex-wrap justify-center">
             <div className="card bg-white w-[500px] h-[800px] rounded-[10px] shadow-xl">
               <section className="flex flex-col">
@@ -85,7 +92,7 @@ const CheckoutPage = () => {
               </section>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
 
       <footer className=" bg-[#ffffff]">

@@ -1,14 +1,14 @@
 import { DocumentDuplicateIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const CardInstruksi = () => {
-  const [accountNumber, setAccountNumber] = useState("137000299089");
   const [onCopy, setOnCopy] = useState(false);
+  const { transaction, amounts } = useSelector((state) => state.transaction);
 
   const handleCopy = () => {
-    const duplicateData = `${accountNumber}`;
+    const duplicateData = `${transaction.noRek}`;
     navigator.clipboard.writeText(duplicateData);
-    setAccountNumber(duplicateData);
     setOnCopy(true);
 
     setTimeout(() => {
@@ -26,18 +26,18 @@ const CardInstruksi = () => {
                 <h1 className="font-bold text-xl">Waiting for payment</h1>
                 <p className="pt-6 font-bold text-base">Payment Method:</p>
                 <p className="pt-2 text-base text-[#6D7175]">
-                  Bank Transfer (verifikasi manual)-Mandiri
+                  {transaction.name}
                 </p>
                 <div className="flex flex-row gap-5">
                   <img
-                    src="/images/mandiri.png"
+                    src={transaction.image}
                     alt=""
                     className="w-24 px-2 py-5"
                     loading="lazy"
                   />
-                  <a className="pt-5 text-base text-[#6D7175]">
+                  <a className="pt-2 text-base text-[#6D7175]">
                     <div className="flex items-center">
-                      No Rek. {accountNumber}
+                      No Rek. {transaction.noRek}
                       <p
                         className="tooltip"
                         data-tip={`${onCopy ? "copied" : "copy"} `}
@@ -48,12 +48,17 @@ const CardInstruksi = () => {
                         />
                       </p>
                     </div>
-                    <p>a.n. PT Widya Kreasi Bangsa</p>
+                    <p>a.n. {transaction.nameRek}</p>
                   </a>
                 </div>
 
                 <p className="pt-2 font-bold text-base">Your total payment:</p>
-                <p className="pt-2 font-bold text-2xl">$141.92</p>
+                <p className="pt-2 font-bold text-2xl">
+                  {amounts.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </p>
               </div>
               <div>
                 <h1 className="font-bold text-xl">Payment instructions</h1>
