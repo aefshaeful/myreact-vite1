@@ -73,26 +73,6 @@ const CheckoutPage = () => {
             <CartList />
           </div>
         </div>
-
-        {/* <div className="flex flex-wrap justify-center max-w-full h-full mt-8 pb-[180px]">
-          <div className="px-4 py-4 lg:w-1/2 flex flex-wrap justify-center">
-            <div className="card bg-white w-[500px] h-[800px] rounded-[10px] shadow-xl">
-              <section className="flex flex-col">
-                <h1 className="font-bold text-xl pl-8 lg:pt-8">
-                  Pilih Metode Pembayaran
-                </h1>
-                <Accordion />
-              </section>
-            </div>
-          </div>
-          <div className="px-4 py-4 lg:w-1/2 flex flex-wrap justify-center">
-            <div className="card bg-white w-[500px] md:w-[500px] h-[800px] rounded-[10px] shadow-xl">
-              <section className="flex flex-col px-[30px] py-[35px]">
-                <FormCheckout />
-              </section>
-            </div>
-          </div>
-        </div> */}
       </main>
 
       <footer className=" bg-[#ffffff]">
